@@ -41,7 +41,7 @@
                 android:layout_height="wrap_content"
                 android:layout_gravity="center_horizontal"
                 android:layout_marginTop="13dp"
-                android:text="Отрасль"
+                android:text="@string/sector"
                 android:textColor="#3D3F40"
                 android:textSize="24sp" />
 
@@ -128,7 +128,7 @@
                 android:layout_height="wrap_content"
                 android:layout_gravity="center_horizontal"
                 android:layout_marginTop="13dp"
-                android:text="Подотрасль"
+                android:text="@string/subSector"
                 android:textColor="#3D3F40"
                 android:textSize="24sp" />
 
@@ -215,7 +215,7 @@
                 android:layout_height="wrap_content"
                 android:layout_gravity="center_horizontal"
                 android:layout_marginTop="13dp"
-                android:text="Технологии. 1 уровень"
+                android:text="@string/technologies1Lvl"
                 android:textColor="#3D3F40"
                 android:textSize="24sp" />
 
@@ -302,7 +302,7 @@
                 android:layout_height="wrap_content"
                 android:layout_gravity="center_horizontal"
                 android:layout_marginTop="13dp"
-                android:text="Технологии. 2 уровень"
+                android:text="@string/technologies2Lvl"
                 android:textColor="#3D3F40"
                 android:textSize="24sp" />
 
@@ -389,7 +389,7 @@
                 android:layout_height="wrap_content"
                 android:layout_gravity="center_horizontal"
                 android:layout_marginTop="13dp"
-                android:text="Технологии. 3 уровень"
+                android:text="@string/technologies3Lvl"
                 android:textColor="#3D3F40"
                 android:textSize="24sp" />
 
@@ -476,7 +476,7 @@
                 android:layout_height="wrap_content"
                 android:layout_gravity="center_horizontal"
                 android:layout_marginTop="13dp"
-                android:text="ОКПД2"
+                android:text="@string/okpd2"
                 android:textColor="#3D3F40"
                 android:textSize="24sp" />
 
@@ -563,7 +563,7 @@
                 android:layout_height="wrap_content"
                 android:layout_gravity="center_horizontal"
                 android:layout_marginTop="13dp"
-                android:text="Описание"
+                android:text="@string/description"
                 android:textColor="#3D3F40"
                 android:textSize="24sp" />
 
@@ -641,7 +641,7 @@
             android:layout_marginTop="28dp"
             android:layout_marginBottom="28dp"
             android:background="@drawable/button_background"
-            android:text="Завершить"
+            android:text="@string/finish"
             android:textAllCaps="false"
             android:textColor="@color/white"
             android:textSize="22sp"

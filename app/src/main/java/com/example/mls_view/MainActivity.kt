@@ -25,7 +25,6 @@ import java.io.File
 class MainActivity : AppCompatActivity() {
 
     private val url = "http://194.67.121.96:5000/processing"
-    //private val key = "26a213594e7f4f6e8cd89064d885ea93"
 
     private lateinit var progressBar : ProgressBar
     private lateinit var editText1 : EditText
@@ -36,7 +35,14 @@ class MainActivity : AppCompatActivity() {
     private lateinit var editText6 : EditText
     private lateinit var editText7 : EditText
     private lateinit var btnSearch : Button
-    private lateinit var btnUpload : Button
+    //private lateinit var btnUpload : Button
+    private lateinit var text1:String
+    private lateinit var text2:String
+    private lateinit var text3:String
+    private lateinit var text4:String
+    private lateinit var text5:String
+    private lateinit var text6:String
+    private lateinit var text7:String
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -46,9 +52,9 @@ class MainActivity : AppCompatActivity() {
         btnSearch.setOnClickListener(View.OnClickListener {
             check()
         })
-        btnUpload.setOnClickListener(View.OnClickListener {
-            getUri()
-        })
+        //btnUpload.setOnClickListener(View.OnClickListener {
+        //    getUri()
+        //})
     }
 
     private fun init(){
@@ -61,53 +67,54 @@ class MainActivity : AppCompatActivity() {
         editText7 = findViewById(R.id.editText7)
 
         btnSearch = findViewById(R.id.btnSearch)
-        btnUpload = findViewById(R.id.btnUpload)
+        //btnUpload = findViewById(R.id.btnUpload)
 
         progressBar = findViewById(R.id.progressBar)
     }
 
     private fun setAndStart(){
-        SearchRep.text11 = editText1.text.toString()
-        SearchRep.text21 = editText2.text.toString()
-        SearchRep.text31 = editText3.text.toString()
-        SearchRep.text41 = editText4.text.toString()
-        SearchRep.text51 = editText5.text.toString()
-        SearchRep.text61 = editText6.text.toString()
-        SearchRep.text71 = editText7.text.toString()
+        SearchRep.text11 = text1
+        SearchRep.text21 = text2
+        SearchRep.text31 = text3
+        SearchRep.text41 = text4
+        SearchRep.text51 = text5
+        SearchRep.text61 = text6
+        SearchRep.text71 = text7
 
         val  i = Intent(this, ResultsActivity::class.java)
         startActivity(i)
+        finish()
     }
 
     private fun check(){
-        if (editText1.text.isNullOrBlank() || editText2.text.isNullOrBlank() || editText3.text.isNullOrBlank()
-            || editText4.text.isNullOrBlank() || editText5.text.isNullOrBlank() || editText6.text.isNullOrBlank() || editText7.text.isNullOrBlank()
-        ){
-            Toast.makeText(this, "Заполните поля", Toast.LENGTH_SHORT).show()
-        }else{
-            progressBar.visibility = View.VISIBLE
-            post()
-        }
+        text1 = editText1.text.toString()
+        text2 = editText2.text.toString()
+        text3 = editText3.text.toString()
+        text4 = editText4.text.toString()
+        text5 = editText5.text.toString()
+        text6 = editText6.text.toString()
+        text7 = editText7.text.toString()
+
+        progressBar.visibility = View.VISIBLE
+        post()
     }
     private fun post(){
         val postData = JSONObject()
         try {
-            postData.put("sector", editText1.text.toString())
-            postData.put("subSector", editText2.text.toString())
-            postData.put("technologies1Lvl", editText3.text.toString())
-            postData.put("technologies2Lvl", editText4.text.toString())
-            postData.put("technologies3Lvl", editText5.text.toString())
-            postData.put("okpd2", editText6.text.toString())
-            postData.put("description", editText7.text.toString())
+            postData.put("sector", text1)
+            postData.put("subSector", text2)
+            postData.put("technologies1Lvl", text3)
+            postData.put("technologies2Lvl", text4)
+            postData.put("technologies3Lvl", text5)
+            postData.put("okpd2", text6)
+            postData.put("description", text7)
         } catch (e: JSONException){
             Log.d("MyLog", e.toString())
         }
         val requestQueue = Volley.newRequestQueue(this)
         val stringRequest = object: JsonObjectRequest(Method.POST, url, postData, { response ->
             try {
-                Log.d("GG", response.getJSONObject("sector").toString())
                 SearchRep.response = response
-
                 progressBar.visibility = View.GONE
                 setAndStart()
             } catch (e : JSONException){
@@ -128,23 +135,5 @@ class MainActivity : AppCompatActivity() {
             }
         }
         requestQueue.add(stringRequest)
-    }
-
-    private var getFilesLauncher: ActivityResultLauncher<Intent> = registerForActivityResult(
-        ActivityResultContracts.StartActivityForResult()
-    ){
-        if (it.resultCode == Activity.RESULT_OK){
-            val data: Intent = it.data!!
-            Log.d("GG", data.data.toString())
-            val file = File(data.data.toString())
-        }
-    }
-
-    private fun getUri(){
-        val intent = Intent().setType("*/*").setAction(Intent.ACTION_GET_CONTENT)
-        intent.putExtra(Intent.EXTRA_LOCAL_ONLY, true)
-        intent.addCategory(Intent.CATEGORY_OPENABLE)
-        intent.flags = FLAG_GRANT_READ_URI_PERMISSION or FLAG_GRANT_WRITE_URI_PERMISSION
-        getFilesLauncher.launch(intent)
     }
 }

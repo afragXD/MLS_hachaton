@@ -2,6 +2,7 @@ package com.example.mls_view
 
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
+import android.view.View
 import android.widget.Button
 import android.widget.EditText
 import android.widget.LinearLayout
@@ -41,6 +42,9 @@ class ResultsActivity : AppCompatActivity() {
 
         init()
         setTextView()
+        btnFinish.setOnClickListener(View.OnClickListener {
+            finish()
+        })
     }
     private fun init(){
         text11 = findViewById(R.id.text11)
@@ -80,43 +84,70 @@ class ResultsActivity : AppCompatActivity() {
         text71.text = SearchRep.text71
 
         text12.text = SearchRep.response.getJSONObject("sector").getString("value")
-        if ( SearchRep.response.getJSONObject("sector").getString("check") == "true"){
+        if (SearchRep.text11.isBlank()){
+            linearLayout.setBackgroundResource(R.drawable.layout_radius2_3)
+        }
+        else if ( SearchRep.response.getJSONObject("sector").getString("check") == "true"){
             linearLayout.setBackgroundResource(R.drawable.layout_radius2_2)
         }else{
             linearLayout.setBackgroundResource(R.drawable.layout_radius2)
         }
+
         text22.text = SearchRep.response.getJSONObject("subSector").getString("value")
-        if ( SearchRep.response.getJSONObject("subSector").getString("check") == "true"){
+        if (SearchRep.text21.isBlank()){
+            linearLayout2.setBackgroundResource(R.drawable.layout_radius2_3)
+        }
+        else if ( SearchRep.response.getJSONObject("subSector").getString("check") == "true"){
             linearLayout2.setBackgroundResource(R.drawable.layout_radius2_2)
         }else{
             linearLayout2.setBackgroundResource(R.drawable.layout_radius2)
         }
+
         text32.text = SearchRep.response.getJSONObject("technologies1Lvl").getString("value")
-        if ( SearchRep.response.getJSONObject("technologies1Lvl").getString("check") == "true"){
+        if (SearchRep.text31.isBlank()){
+            linearLayout3.setBackgroundResource(R.drawable.layout_radius2_3)
+        }
+        else if ( SearchRep.response.getJSONObject("technologies1Lvl").getString("check") == "true"){
             linearLayout3.setBackgroundResource(R.drawable.layout_radius2_2)
         }else{
             linearLayout3.setBackgroundResource(R.drawable.layout_radius2)
         }
+
         text42.text = SearchRep.response.getJSONObject("technologies2Lvl").getString("value")
-        if ( SearchRep.response.getJSONObject("technologies2Lvl").getString("check") == "true"){
+        if (SearchRep.text41.isBlank()){
+            linearLayout4.setBackgroundResource(R.drawable.layout_radius2_3)
+        }
+        else if ( SearchRep.response.getJSONObject("technologies2Lvl").getString("check") == "true"){
             linearLayout4.setBackgroundResource(R.drawable.layout_radius2_2)
         }else{
             linearLayout4.setBackgroundResource(R.drawable.layout_radius2)
         }
+
         text52.text = SearchRep.response.getJSONObject("technologies3Lvl").getString("value")
-        if ( SearchRep.response.getJSONObject("technologies3Lvl").getString("check") == "true"){
+        if (SearchRep.text51.isBlank()){
+            linearLayout5.setBackgroundResource(R.drawable.layout_radius2_3)
+        }
+        else if ( SearchRep.response.getJSONObject("technologies3Lvl").getString("check") == "true"){
             linearLayout5.setBackgroundResource(R.drawable.layout_radius2_2)
         }else{
             linearLayout5.setBackgroundResource(R.drawable.layout_radius2)
         }
+
         text62.text = SearchRep.response.getJSONObject("okpd2").getString("value")
-        if ( SearchRep.response.getJSONObject("okpd2").getString("check") == "true"){
+        if (SearchRep.text61.isBlank()){
+            linearLayout6.setBackgroundResource(R.drawable.layout_radius2_3)
+        }
+        else if ( SearchRep.response.getJSONObject("okpd2").getString("check") == "true"){
             linearLayout6.setBackgroundResource(R.drawable.layout_radius2_2)
         }else{
             linearLayout6.setBackgroundResource(R.drawable.layout_radius2)
         }
+
         text72.text = SearchRep.response.getJSONObject("description").getString("value")
-        if ( SearchRep.response.getJSONObject("description").getString("check") == "true"){
+        if (SearchRep.text71.isBlank()){
+            linearLayout7.setBackgroundResource(R.drawable.layout_radius2_3)
+        }
+        else if ( SearchRep.response.getJSONObject("description").getString("check") == "true"){
             linearLayout7.setBackgroundResource(R.drawable.layout_radius2_2)
         }else{
             linearLayout7.setBackgroundResource(R.drawable.layout_radius2)
