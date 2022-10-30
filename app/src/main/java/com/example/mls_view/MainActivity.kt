@@ -35,7 +35,6 @@ class MainActivity : AppCompatActivity() {
     private lateinit var editText6 : EditText
     private lateinit var editText7 : EditText
     private lateinit var btnSearch : Button
-    //private lateinit var btnUpload : Button
     private lateinit var text1:String
     private lateinit var text2:String
     private lateinit var text3:String
@@ -52,9 +51,6 @@ class MainActivity : AppCompatActivity() {
         btnSearch.setOnClickListener(View.OnClickListener {
             check()
         })
-        //btnUpload.setOnClickListener(View.OnClickListener {
-        //    getUri()
-        //})
     }
 
     private fun init(){
@@ -67,7 +63,6 @@ class MainActivity : AppCompatActivity() {
         editText7 = findViewById(R.id.editText7)
 
         btnSearch = findViewById(R.id.btnSearch)
-        //btnUpload = findViewById(R.id.btnUpload)
 
         progressBar = findViewById(R.id.progressBar)
     }
@@ -109,7 +104,7 @@ class MainActivity : AppCompatActivity() {
             postData.put("okpd2", text6)
             postData.put("description", text7)
         } catch (e: JSONException){
-            Log.d("MyLog", e.toString())
+            Log.d("GG", e.toString())
         }
         val requestQueue = Volley.newRequestQueue(this)
         val stringRequest = object: JsonObjectRequest(Method.POST, url, postData, { response ->
@@ -118,13 +113,11 @@ class MainActivity : AppCompatActivity() {
                 progressBar.visibility = View.GONE
                 setAndStart()
             } catch (e : JSONException){
-                Log.d("GG", "ErrorJSON")
                 Log.d("GG", e.toString())
                 progressBar.visibility = View.GONE
             }
         }, {
                 error ->
-            Log.d("GG", "Error")
             Log.d("GG", error.toString())
             progressBar.visibility = View.GONE
         }){

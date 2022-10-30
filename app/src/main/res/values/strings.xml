@@ -10,4 +10,10 @@
     <string name="description">Описание</string>
     <string name="check">Проверить</string>
     <string name="finish">Завершить</string>
+    <string name="enter">Ввести</string>
+    <string name="upload">Загрузить</string>
+    <string name="text_start1">Самостоятельный ввод данных</string>
+    <string name="text_start_1">Загрузка таблиц .xls или .csv</string>
+    <string name="text_main_start">Проверка данных</string>
+    <string name="text_main_2">Результаты проверки</string>
 </resources>
